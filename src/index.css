@@ -109,3 +109,10 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+.dialog{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: row;
+  gap: 0.2rem;
+}
