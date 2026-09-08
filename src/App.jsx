@@ -5,27 +5,30 @@ import { motion } from 'framer-motion'
 
 export default function App() {
   const [buttonClicked, setButtonClicked] = useState(false)
-
+  const [moveOn, setMoveOn] = useState(false)
   return(
     <div>
-      {!buttonClicked &&
+      {!moveOn &&
       <div className = "dialog" style = {{gap: '10rem'}}>
-        <div>
+         {!buttonClicked && <div>
           <h1> Pip's Journey </h1>
           <button onClick={() => zoomer()}> Click to play</button>
-        </div>
+        </div>}
         <motion.img
-          animate = {{scale: buttonClicked? 4:1}}
-          transition = {{duration: 0.5}}
+          animate = {{scale: buttonClicked? 3:1, y: buttonClicked? 350: 0}}
+          transition = {{duration: 1}}
+          src = {img}
         />
-        <img src = {img}/>
       </div>}
-      {buttonClicked && <Login/>}
-
+      {moveOn && <Login />}
     </div>
   );
+  function zoomer(){
+    console.log("clicked")
+    setButtonClicked(true)
+    setTimeout(() => {
+      setMoveOn(true)
+    }, 2000)
+  }
 }
 
-function zoomer(){
-  setButtonClicked(true)
-}
